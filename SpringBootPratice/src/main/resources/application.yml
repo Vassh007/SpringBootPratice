@@ -1,0 +1,72 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: qa
+
+---
+
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/suvapp
+    password: Thecoolme9184!
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+welcome:
+  message: Welcome to Suvash World!!
+
+---
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/suvapp-qa
+    password: Thecoolme9184!
+
+  jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: 'true'
+
+welcome:
+    message: Welcome to Suvash World!!
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env, beans"
+
+---
+
+spring:
+  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/suvapp-prod
+    password: Thecoolme9184!
+
+  jpa:
+      hibernate:
+          ddl-auto: update
+      show-sql: 'true'
+
+welcome:
+    message: Welcome to Suvash World!!
+
+
+
+
